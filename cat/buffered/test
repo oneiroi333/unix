@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <string.h>
+#include "zellers_congruence.h"
+
+#define WDAYS_MAX 7
+
+int main() {
+
+    char* wdays_names[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    int i, j, max_occur, wdays_count[WDAYS_MAX];
+
+    memset(wdays_count, 0, sizeof(wdays_count));
+
+    for (i = 0; i < 400; i++) { // Iteration over 400 years
+        for (j = 1; j < 13; j++) { // Iteration over 12 months of a year
+            wdays_count[getWeekdayFromDate(13, j, 2016 + i)]++;
+        }
+    }
+
+    printf("Absolute frequency of the days of the week, which fall on the 13th of a month, over a period of 400 years.\n");
+    for (i = 0; i < WDAYS_MAX; i++) {
+        switch (i) {
+            case 0:
+                printf("%s: \t%i\n", wdays_names[i], wdays_count[i]);
+                break;
+            case 1:
+                printf("%s: \t%i\n", wdays_names[i], wdays_count[i]);
+                break;
+            case 2:
+                printf("%s: \t%i\n", wdays_names[i], wdays_count[i]);
+                break;
+            case 3:
+                printf("%s: \t%i\n", wdays_names[i], wdays_count[i]);
+                break;
+            case 4:
+                printf("%s: \t%i\n", wdays_names[i], wdays_count[i]);
+                break;
+            case 5:
+                printf("%s: \t%i\n", wdays_names[i], wdays_count[i]);
+                break;
+            default:
+                printf("%s: \t%i\n", wdays_names[i], wdays_count[i]);
+        }
+    }
+
+    // Determine the weekday with the highest occurrence
+    max_occur = wdays_count[0];
+    j = 0; // wdays_count index pointer
+    for (i = 1; i < WDAYS_MAX; i++) {
+       if (wdays_count[i] > max_occur) {
+           max_occur = wdays_count[i];
+           j = i;
+       }
+    }
+    printf("\nThe weekday with the highest occurrence is: ");
+    switch (j) {
+        case 0:
+            printf("%s", wdays_names[j]);
+            break;
+        case 1:
+            printf("%s", wdays_names[j]);
+            break;
+        case 2:
+            printf("%s", wdays_names[j]);
+            break;
+        case 3:
+            printf("%s", wdays_names[j]);
+            break;
+        case 4:
+            printf("%s", wdays_names[j]);
+            break;
+        case 5:
+            printf("%s", wdays_names[j]);
+            break;
+        default:
+            printf("%s", wdays_names[j]);
+    }
+
+    return 0;
+}
